@@ -1056,7 +1056,7 @@ function svo.sk.stun_symptom()
   sk.stun_count = sk.stun_count + 1
 
   if sk.stun_count &gt;= 3 then
-    svo.valid.proper_stun()
+    svo.valid.simplestun()
     echo"\n" svo.echof("auto-detected stun.")
     sk.stun_count = 0
     return
@@ -2327,7 +2327,6 @@ function svo.sk.fix_affs_and_defs()
     svo.addaffdict(svo.dict.deafaff)
     svo.echof("deafness is now considered an affliction, will cure it.")
   end
-	svo.sk.updateserversideprios()
 end
 
 
@@ -2947,7 +2946,7 @@ svo.prompt_stats = function ()
     stats.maxhealth                = stats.maxhealth or oldmaxhealth
     stats.maxmana                  = stats.maxmana or oldmaxmana
     stats.maxendurance             = stats.maxendurance or oldmaxendurance
-    stats.maxwillpower             = stats.maxwillpower or oldmaxwillpower
+    stats.maxwillpowermaxwillpower = stats.maxwillpower or oldmaxwillpower
 
     stats.hp = sformat("%.1f", (100/stats.maxhealth)*stats.currenthealth)
     stats.mp = sformat("%.1f", (100/stats.maxmana)*stats.currentmana)

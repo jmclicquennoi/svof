@@ -99,7 +99,7 @@ function svo.valid.diagnose_end()
   svo.sk.diag_list = {}
 end
 
-for _,affname in ipairs({'mindravaged', 'crushedthroat', 'ablaze', 'severeburn', 'extremeburn', 'charredburn', 'meltingburn', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 'asthma', 'blackout', 'bleeding', 'bound', 'burning', 'claustrophobia', 'clumsiness', 'mildconcussion', 'confusion', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'darkshade', 'deadening', 'dementia', 'disloyalty', 'disrupt', 'dissonance', 'dizziness', 'epilepsy', 'fear', 'galed', 'generosity', 'haemophilia', 'hallucinations', 'healthleech', 'heartseed', 'hellsight', 'hypersomnia', 'hypochondria', 'icing', 'illness', 'impale', 'impatience', 'inlove', 'inquisition', 'itching', 'justice', 'laceratedthroat', 'lethargy', 'loneliness', 'lovers', 'madness', 'mangledleftarm', 'mangledleftleg', 'mangledrightarm', 'mangledrightleg', 'masochism', 'mildtrauma', 'mutilatedleftarm', 'mutilatedleftleg', 'mutilatedrightarm', 'mutilatedrightleg', 'pacifism', 'paralysis', 'paranoia', 'peace', 'prone', 'recklessness', 'relapsing', 'roped', 'selarnia', 'sensitivity', 'seriousconcussion', 'serioustrauma', 'shyness', 'slashedthroat', 'slickness', 'stun', 'stupidity', 'stuttering', 'transfixed', 'unknownany', 'unknowncrippledarm', 'unknowncrippledleg', 'unknownmental', 'vertigo', 'voided', 'voyria', 'weakness', 'webbed', 'hamstring', 'shivering', 'frozen', 'manaleech', 'voyria', 'slightfluid', 'elevatedfluid', 'highfluid', 'seriousfluid', 'criticalfluid', 'godfeelings', 'phlogistication', 'vitrification', 'corrupted', 'stain', 'rixil', 'palpatar', 'cadmus', 'hecate', 'ninkharsag', 'hoisted', 'swellskin', 'pinshot', 'hypothermia', 'scalded', 'dehydrated', 'timeflux', 'numbedleftarm', 'numbedrightarm', 'unconsciousness', 'depression', 'parasite', 'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'hatred', 'guilt', 'tenderskin', 'spiritburn', 'crushedthroat', 'tension'}) do
+for _,affname in ipairs({'ablaze', 'severeburn', 'extremeburn', 'charredburn', 'meltingburn', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 'asthma', 'blackout', 'bleeding', 'bound', 'burning', 'claustrophobia', 'clumsiness', 'mildconcussion', 'confusion', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'darkshade', 'deadening', 'dementia', 'disloyalty', 'disrupt', 'dissonance', 'dizziness', 'epilepsy', 'fear', 'galed', 'generosity', 'haemophilia', 'hallucinations', 'healthleech', 'heartseed', 'hellsight', 'hypersomnia', 'hypochondria', 'icing', 'illness', 'impale', 'impatience', 'inlove', 'inquisition', 'itching', 'justice', 'laceratedthroat', 'lethargy', 'loneliness', 'lovers', 'madness', 'mangledleftarm', 'mangledleftleg', 'mangledrightarm', 'mangledrightleg', 'masochism', 'mildtrauma', 'mutilatedleftarm', 'mutilatedleftleg', 'mutilatedrightarm', 'mutilatedrightleg', 'pacifism', 'paralysis', 'paranoia', 'peace', 'prone', 'recklessness', 'relapsing', 'roped', 'selarnia', 'sensitivity', 'seriousconcussion', 'serioustrauma', 'shyness', 'slashedthroat', 'slickness', 'stun', 'stupidity', 'stuttering', 'transfixed', 'unknownany', 'unknowncrippledarm', 'unknowncrippledleg', 'unknownmental', 'vertigo', 'voided', 'voyria', 'weakness', 'webbed', 'hamstring', 'shivering', 'frozen', 'manaleech', 'voyria', 'slightfluid', 'elevatedfluid', 'highfluid', 'seriousfluid', 'criticalfluid', 'godfeelings', 'phlogistication', 'vitrification', 'corrupted', 'stain', 'rixil', 'palpatar', 'cadmus', 'hecate', 'ninkharsag', 'hoisted', 'swellskin', 'pinshot', 'hypothermia', 'scalded', 'dehydrated', 'timeflux', 'numbedleftarm', 'numbedrightarm', 'unconsciousness', 'depression', 'parasite', 'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'hatred', 'guilt', 'tenderskin', 'spiritburn', 'crushedthroat'}) do
   svo.valid['diag_'..affname] = function()
     svo.sk.diag_list[affname] = true
 
@@ -116,7 +116,7 @@ for _,affname in ipairs({'mindravaged', 'crushedthroat', 'ablaze', 'severeburn',
 end
 
 -- afflictions with a count
-for _, aff in ipairs({'unweavingbody', 'unweavingmind', 'unweavingspirit', 'cholerichumour', 'melancholichumour', 'phlegmatichumour', 'sanguinehumour', 'bleeding', 'skullfractures', 'crackedribs', 'wristfractures', 'torntendons'}) do
+for _, aff in ipairs({'cholerichumour', 'melancholichumour', 'phlegmatichumour', 'sanguinehumour', 'bleeding', 'skullfractures', 'crackedribs', 'wristfractures', 'torntendons'}) do
   svo.valid['diag_'..aff] = function(howmuch)
     svo.sk.diag_list[aff] = tonumber(howmuch)
 
@@ -151,7 +151,7 @@ local valid, actions = svo.valid, svo.actions
 local lifevision = svo.lifevision
 
 do
-  local afflist = {'unweavingbody', 'unweavingmind', 'unweavingspirit', 'mindravaged', 'ablaze', 'severeburn', 'extremeburn', 'charredburn', 'meltingburn', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 'asthma', 'blackout', 'bleeding', 'bound', 'burning', 'claustrophobia', 'clumsiness', 'mildconcussion', 'confusion', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'darkshade', 'deadening', 'dementia', 'disloyalty', 'disrupt', 'dissonance', 'dizziness', 'epilepsy', 'fear', 'galed', 'generosity', 'haemophilia', 'hallucinations', 'healthleech', 'heartseed', 'hellsight', 'hypersomnia', 'hypochondria', 'icing', 'illness', 'impale', 'impatience', 'inlove', 'inquisition', 'itching', 'justice', 'laceratedthroat', 'lethargy', 'loneliness', 'lovers', 'madness', 'mangledleftarm', 'mangledleftleg', 'mangledrightarm', 'mangledrightleg', 'masochism', 'mildtrauma', 'mutilatedleftarm', 'mutilatedleftleg', 'mutilatedrightarm', 'mutilatedrightleg', 'pacifism', 'paralysis', 'paranoia', 'peace', 'prone', 'recklessness', 'relapsing', 'roped', 'selarnia', 'sensitivity', 'seriousconcussion', 'serioustrauma', 'shyness', 'slashedthroat', 'slickness', 'stun', 'stupidity', 'stuttering', 'transfixed', 'unknownany', 'unknowncrippledarm', 'unknowncrippledleg', 'unknownmental', 'vertigo', 'voided', 'voyria', 'weakness', 'webbed', 'hamstring', 'shivering', 'frozen', 'blindaff', 'deafaff', 'retardation', 'manaleech', 'sleep', 'amnesia', 'unknowncrippledlimb', 'cholerichumour', 'melancholichumour', 'phlegmatichumour', 'sanguinehumour', 'phlogistication', 'vitrification', 'corrupted', 'stain', 'rixil', 'palpatar', 'cadmus', 'hecate', 'ninkharsag', 'swellskin', 'pinshot', 'hypothermia', 'scalded', 'dehydrated', 'timeflux', 'lullaby', 'numbedleftarm', 'numbedrightarm', 'unconsciousness', 'depression', 'parasite', 'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'hatred', 'guilt', 'spiritburn', 'tenderskin', 'crushedthroat', 'calcifiedtorso', 'calcifiedskull'}
+  local afflist = {'ablaze', 'severeburn', 'extremeburn', 'charredburn', 'meltingburn', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 'asthma', 'blackout', 'bleeding', 'bound', 'burning', 'claustrophobia', 'clumsiness', 'mildconcussion', 'confusion', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'darkshade', 'deadening', 'dementia', 'disloyalty', 'disrupt', 'dissonance', 'dizziness', 'epilepsy', 'fear', 'galed', 'generosity', 'haemophilia', 'hallucinations', 'healthleech', 'heartseed', 'hellsight', 'hypersomnia', 'hypochondria', 'icing', 'illness', 'impale', 'impatience', 'inlove', 'inquisition', 'itching', 'justice', 'laceratedthroat', 'lethargy', 'loneliness', 'lovers', 'madness', 'mangledleftarm', 'mangledleftleg', 'mangledrightarm', 'mangledrightleg', 'masochism', 'mildtrauma', 'mutilatedleftarm', 'mutilatedleftleg', 'mutilatedrightarm', 'mutilatedrightleg', 'pacifism', 'paralysis', 'paranoia', 'peace', 'prone', 'recklessness', 'relapsing', 'roped', 'selarnia', 'sensitivity', 'seriousconcussion', 'serioustrauma', 'shyness', 'slashedthroat', 'slickness', 'stun', 'stupidity', 'stuttering', 'transfixed', 'unknownany', 'unknowncrippledarm', 'unknowncrippledleg', 'unknownmental', 'vertigo', 'voided', 'voyria', 'weakness', 'webbed', 'hamstring', 'shivering', 'frozen', 'blindaff', 'deafaff', 'retardation', 'manaleech', 'sleep', 'amnesia', 'unknowncrippledlimb', 'cholerichumour', 'melancholichumour', 'phlegmatichumour', 'sanguinehumour', 'phlogistication', 'vitrification', 'corrupted', 'stain', 'rixil', 'palpatar', 'cadmus', 'hecate', 'ninkharsag', 'swellskin', 'pinshot', 'hypothermia', 'scalded', 'dehydrated', 'timeflux', 'lullaby', 'numbedleftarm', 'numbedrightarm', 'unconsciousness', 'depression', 'parasite', 'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'hatred', 'guilt', 'spiritburn', 'tenderskin', 'crushedthroat'}
   if svo.haveskillset('metamorphosis') then
     afflist[#afflist+1] = 'cantmorph'
   end
@@ -603,7 +603,7 @@ function svo.valid.dragonformingcolour(colour)
        ['red'] = 'dragonfire',
        ['black'] = 'acid',
        ['silver'] = 'lightning',
-       ['gold'] = 'psi',
+       -- it is 'golden' and not 'gold' for this message
        ['golden'] = 'psi',
        ['blue'] = 'ice',
        ['green'] = 'venom'
@@ -911,7 +911,7 @@ function svo.valid.symp_stun()
   -- svo.reset non-wait things we were doing, because they got cancelled by the stun
   if affs.stun or actions.stun_aff then
     for _,v in actions:iter() do
-      if v.p.balance ~= 'waitingfor' and v.p.balance ~= 'aff' and svo.dict[v.p.action_name] then
+      if v.p.balance ~= 'waitingfor' and v.p.balance ~= 'aff' then
         svo.killaction(svo.dict[v.p.action_name][v.p.balance])
       end
     end
@@ -2140,9 +2140,55 @@ function svo.valid.humour_truewrack()
   end
 end
 
-function svo.valid.got_humour(which,count)
+function svo.valid.got_humour(which)
   svo.assert(svo.dict[which..'humour'], "svo.valid.got_humour: which humour to add?")
-  local humourlevels = count or 1
+
+  local function countaffs(humour)
+    local affs_in_a_humour = 3
+
+    local t = {
+      choleric    = {'illness', 'sensitivity', 'slickness'},
+      melancholic = {'anorexia', 'impatience', 'stupidity'},
+      phlegmatic  = {'asthma', 'clumsiness', 'disloyalty'},
+      sanguine    = {'haemophilia', 'recklessness',  'paralysis'}
+    }
+
+    -- add the amount of focusables in a humour as the 4th argument, to check for as well
+    for humour, data in pairs(t) do
+      local focusables_in_humour = 0
+      for i = 1, affs_in_a_humour do
+        if svo.dict[data[i]].focus then focusables_in_humour = focusables_in_humour + 1 end
+      end
+      data[affs_in_a_humour+1] = focusables_in_humour
+    end
+
+    -- update temper count according to known humour-related affs we've got
+    local count = 0
+    for i = 1, affs_in_a_humour do
+      if affs[t[humour][i]] then count = count + 1 end
+    end
+
+    -- update temper count according to unknown focusable affs we've got, limited by the max
+    -- amount of focusable affs we can have
+    if affs.unknownmental then
+      local max_focusable_affs_in_humour = t[humour][affs_in_a_humour+1]
+      count = count + (svo.dict.unknownmental.count &gt; max_focusable_affs_in_humour and max_focusable_affs_in_humour or svo.dict.unknownmental.count)
+    end
+
+    -- and lastly, unknown affs
+    if affs.unknownany then
+      count = count + svo.dict.unknownany.count
+    end
+
+    return count
+  end
+
+  -- humours give up to 3 levels in one go, depending on which relevant afflictions have you got. account for unknown afflictions as well!
+  -- 1 for the temper, + any more affs
+  local humourlevels = 1 + countaffs(which)
+  -- trim the max we counted down to 3, which is the most possible right now
+  if humourlevels &gt; 3 then humourlevels = 3 end
+
   svo.checkaction(svo.dict[which..'humour'].aff, true)
   lifevision.add(actions[which..'humour_aff'].p, nil, humourlevels)
 end
@@ -2993,7 +3039,7 @@ end
 for _, restoration in pairs({
   restorationlegs = {'mutilatedrightleg', 'mutilatedleftleg', 'mangledrightleg', 'mangledleftleg', 'parestolegs'},
   restorationarms = {'mutilatedrightarm', 'mutilatedleftarm', 'mangledrightarm', 'mangledleftarm', 'parestoarms'},
-  restorationother = {'calcifiedtorso', 'calcifiedskull', 'mildtrauma', 'serioustrauma', 'mildconcussion', 'seriousconcussion', 'laceratedthroat', 'heartseed'}}) do
+  restorationother = {'mildtrauma', 'serioustrauma', 'mildconcussion', 'seriousconcussion', 'laceratedthroat', 'heartseed'}}) do
   local other_restoration_affs = {}
 
   -- compile a list of other things we can cure but aren't intending to with this action
@@ -3024,7 +3070,7 @@ end
 for _, regeneration in pairs({
   caloric   = {'frozen', 'shivering', 'caloric'},
   epidermal = {'anorexia', 'itching', 'stuttering', 'slashedthroat', 'blindaff', 'deafaff', 'scalded'},
-  mending   = {'crushedthroat', 'selarnia', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'ablaze', 'unknowncrippledarm', 'unknowncrippledleg', 'unknowncrippledlimb'}}) do
+  mending   = {'selarnia', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'ablaze', 'unknowncrippledarm', 'unknowncrippledleg', 'unknowncrippledlimb'}}) do
   local other_regeneration_affs = {}
 
   for _, aff in pairs(regeneration) do
@@ -3092,7 +3138,7 @@ end
 -- normal smokes
 for _, smoke in pairs({
   valerian = {'disloyalty', 'slickness', 'manaleech'},
-  elm = {'unweavingspirit', 'deadening', 'hellsight', 'madness', 'aeon', 'tension'}}) do
+  elm = {'deadening', 'hellsight', 'madness', 'aeon'}}) do
   local other_smoke_cures = {}
 
   for _, aff in pairs(smoke) do
@@ -3125,8 +3171,8 @@ for _, herb in pairs({
   bellwort   = {'generosity', 'pacifism', 'justice', 'inlove', 'peace', 'retribution', 'timeloop'},
   bloodroot  = {'paralysis', 'slickness'},
   ginger     = {'melancholichumour', 'cholerichumour', 'phlegmatichumour', 'sanguinehumour'},
-  ginseng    = {'unweavingbody', 'haemophilia', 'darkshade', 'relapsing', 'addiction', 'illness', 'lethargy'},
-  goldenseal = {'unweavingmind', 'dissonance', 'impatience', 'stupidity', 'dizziness', 'epilepsy', 'shyness', 'depression', 'shadowmadness'},
+  ginseng    = {'haemophilia', 'darkshade', 'relapsing', 'addiction', 'illness', 'lethargy'},
+  goldenseal = {'dissonance', 'impatience', 'stupidity', 'dizziness', 'epilepsy', 'shyness', 'depression', 'shadowmadness'},
   kelp       = {'asthma', 'hypochondria', 'healthleech', 'sensitivity', 'clumsiness', 'weakness', 'parasite'},
   lobelia    = {'claustrophobia', 'recklessness', 'agoraphobia', 'loneliness', 'masochism', 'vertigo', 'guilt', 'tenderskin', 'spiritburn'}}) do
   local other_herb_cures = {}
@@ -3172,8 +3218,7 @@ end
 
 -- tree touches
 for _, tree in pairs({
-  tree = {'unweavingbody', 'unweavingmind', 'unweavingspirit', 'ablaze', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 'asthma', 'blackout', 'bleeding', 'bound', 'burning', 'claustrophobia', 'clumsiness', 'mildconcussion', 'confusion', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'darkshade', 'deadening', 'dementia', 'disloyalty', 'dissonance', 'dizziness', 'epilepsy', 'fear', 'galed', 'generosity', 'haemophilia', 'hallucinations', 'healthleech', 'hellsight', 'hypersomnia', 'hypochondria', 'icing', 'illness', 'impatience', 'inlove', 'itching', 'justice', 'laceratedthroat', 'lethargy', 'loneliness', 'madness', 'masochism','pacifism', 'paranoia', 'peace', 'prone', 'recklessness', 'relapsing', 'selarnia', 'sensitivity', 'shyness', 'slashedthroat', 'slickness', 'stupidity', 'stuttering',  'vertigo', 'voided', 'voyria', 'weakness', 'hamstring', 'shivering', 'frozen', 'depression', 'parasite', 'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'guilt', 'spiritburn', 'tenderskin', 'crushedthroat', 'tension' 
-	}}) do
+  tree = {'ablaze', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 'asthma', 'blackout', 'bleeding', 'bound', 'burning', 'claustrophobia', 'clumsiness', 'mildconcussion', 'confusion', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'darkshade', 'deadening', 'dementia', 'disloyalty', 'dissonance', 'dizziness', 'epilepsy', 'fear', 'galed', 'generosity', 'haemophilia', 'hallucinations', 'healthleech', 'hellsight', 'hypersomnia', 'hypochondria', 'icing', 'illness', 'impatience', 'inlove', 'itching', 'justice', 'laceratedthroat', 'lethargy', 'loneliness', 'madness', 'masochism','pacifism', 'paranoia', 'peace', 'prone', 'recklessness', 'relapsing', 'selarnia', 'sensitivity', 'shyness', 'slashedthroat', 'slickness', 'stupidity', 'stuttering',  'vertigo', 'voided', 'voyria', 'weakness', 'hamstring', 'shivering', 'frozen', 'depression', 'parasite', 'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'guilt', 'spiritburn', 'tenderskin', 'crushedthroat'}}) do
 
   for _, aff in pairs(tree) do
     valid['tree_cured_'..aff] = function()
@@ -3188,8 +3233,7 @@ end
 
 -- humour cures
 for _, herb in pairs({
-  ginger     = {'melancholichumour', 'cholerichumour', 'phlegmatichumour', 'sanguinehumour'},
-	pear       = {'pressure'}}) do
+  ginger     = {'melancholichumour', 'cholerichumour', 'phlegmatichumour', 'sanguinehumour'}}) do
   local other_humour_cures = {}
   for _, aff in pairs(herb) do
     other_humour_cures[#other_humour_cures+1] = svo.dict[aff].herb
@@ -3556,7 +3600,7 @@ end
 
 
 local generic_cures_data = {
-  'mindravaged', 'unweavingbody', 'unweavingmind', 'unweavingspirit', 'ablaze', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 'asthma', 'blackout', 'bleeding', 'bound', 'burning', 'claustrophobia', 'clumsiness', 'mildconcussion', 'confusion', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'darkshade', 'deadening', 'dementia', 'disloyalty', 'disrupt', 'dissonance', 'dizziness', 'epilepsy', 'fear', 'galed', 'generosity', 'haemophilia', 'hallucinations', 'healthleech', 'heartseed', 'hellsight', 'hypersomnia', 'hypochondria', 'icing', 'illness', 'impale', 'impatience', 'inlove', 'inquisition', 'itching', 'justice', 'laceratedthroat', 'lethargy', 'loneliness', 'lovers', 'madness', 'mangledleftarm', 'mangledleftleg', 'mangledrightarm', 'mangledrightleg', 'masochism', 'mildtrauma', 'mutilatedleftarm', 'mutilatedleftleg', 'mutilatedrightarm', 'mutilatedrightleg', 'pacifism', 'paralysis', 'paranoia', 'peace', 'prone', 'recklessness', 'relapsing', 'roped', 'selarnia', 'sensitivity', 'seriousconcussion', 'serioustrauma', 'shyness', 'slashedthroat', 'slickness', 'stun', 'stupidity', 'stuttering', 'transfixed', 'unknownany', 'unknowncrippledarm', 'unknowncrippledleg', 'unknownmental', 'vertigo', 'voided', 'voyria', 'weakness', 'webbed', 'healhealth', 'healmana', 'hamstring', 'shivering', 'frozen', 'hallucinations', 'stain', 'rixil', 'palpatar', 'cadmus', 'hecate', 'depression', 'parasite', 'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'hatred', 'guilt', 'tenderskin', 'spiritburn', 'crushedthroat', 'tension'
+  'ablaze', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 'asthma', 'blackout', 'bleeding', 'bound', 'burning', 'claustrophobia', 'clumsiness', 'mildconcussion', 'confusion', 'crippledleftarm', 'crippledleftleg', 'crippledrightarm', 'crippledrightleg', 'darkshade', 'deadening', 'dementia', 'disloyalty', 'disrupt', 'dissonance', 'dizziness', 'epilepsy', 'fear', 'galed', 'generosity', 'haemophilia', 'hallucinations', 'healthleech', 'heartseed', 'hellsight', 'hypersomnia', 'hypochondria', 'icing', 'illness', 'impale', 'impatience', 'inlove', 'inquisition', 'itching', 'justice', 'laceratedthroat', 'lethargy', 'loneliness', 'lovers', 'madness', 'mangledleftarm', 'mangledleftleg', 'mangledrightarm', 'mangledrightleg', 'masochism', 'mildtrauma', 'mutilatedleftarm', 'mutilatedleftleg', 'mutilatedrightarm', 'mutilatedrightleg', 'pacifism', 'paralysis', 'paranoia', 'peace', 'prone', 'recklessness', 'relapsing', 'roped', 'selarnia', 'sensitivity', 'seriousconcussion', 'serioustrauma', 'shyness', 'slashedthroat', 'slickness', 'stun', 'stupidity', 'stuttering', 'transfixed', 'unknownany', 'unknowncrippledarm', 'unknowncrippledleg', 'unknownmental', 'vertigo', 'voided', 'voyria', 'weakness', 'webbed', 'healhealth', 'healmana', 'hamstring', 'shivering', 'frozen', 'hallucinations', 'stain', 'rixil', 'palpatar', 'cadmus', 'hecate', 'depression', 'parasite', 'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'hatred', 'guilt', 'tenderskin', 'spiritburn', 'crushedthroat'
 }
 
 for i = 1, #generic_cures_data do
@@ -4710,7 +4754,7 @@ function svo.valid.tree_cured_burns()
   end
 end
 
-for _, aff in ipairs({'unweavingbody', 'unweavingmind', 'unweavingspirit', 'skullfractures', 'crackedribs', 'wristfractures', 'torntendons'}) do
+for _, aff in ipairs({'skullfractures', 'crackedribs', 'wristfractures', 'torntendons'}) do
   valid['tree_cure_'..aff] = function()
     svo.checkaction(svo.dict.touchtree.misc)
     if actions.touchtree_misc then

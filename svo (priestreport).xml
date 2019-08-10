@@ -168,10 +168,10 @@ svo.locating = nil</script>
 					<colorTriggerFgColor>#000000</colorTriggerFgColor>
 					<colorTriggerBgColor>#000000</colorTriggerBgColor>
 					<regexCodeList>
-						<string></string>
+						<string>return isPrompt()</string>
 					</regexCodeList>
 					<regexCodePropertyList>
-						<integer>7</integer>
+						<integer>4</integer>
 					</regexCodePropertyList>
 				</Trigger>
 			</Trigger>
@@ -309,14 +309,12 @@ svo.doaddfree("angel seek "..svo.locating.name)</script>
 		<ScriptGroup isActive="yes" isFolder="yes">
 			<name>svo Priest Report</name>
 			<packageName></packageName>
-			<script>function priestReportPrio(_, module)
-  if module ~= "svo (priestreport)" then return end
-  setModulePriority(module, 1)
-end
-
-
-
-registerAnonymousEventHandler("sysInstall", "priestReportPrio")</script>
+			<script>-------------------------------------------------
+--         Put your Lua functions here.        --
+--                                             --
+-- Note that you can also use external Scripts --
+-------------------------------------------------
+</script>
 			<eventHandlerList />
 			<Script isActive="yes" isFolder="no">
 				<name>svo_load_priestreport</name>

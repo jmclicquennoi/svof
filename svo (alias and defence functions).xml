@@ -849,7 +849,7 @@ function svo.dop(what, echoback)
 end
 
 function svo.dv()
-  svo.sys.manualdiag = true
+  sys.manualdiag = true
   svo.make_gnomes_work()
 end
 
@@ -1434,25 +1434,12 @@ end
     offr = {[[^\w+'s cantata shatters the defences surrounding you\.$]], [[^\w+ delivers a single, powerful blow to the aura of rebounding surrounding you, shattering it\.$]], [[^\w+ brings .+? down in a single diagonal stroke, carving cleanly through your aura of rebounding\.$]], [[^\w+ whirls .+? over (?:her|his) head, before bringing it down upon your aura of rebounding, shattering it instantly\.$]], [[^The point of .+? strikes your aura of rebounding, and rapid cracks begin to spread outward from the point of impact\. Moments later, the protection shatters\.$]]}})
   defs_data:set('blind', { type = 'general',
     def = "You are blind." })
-  defs_data:set('boar tattoo', { nodef = true,
-    def = "The vitality of the boar is energising you."})
-  defs_data:set('moss tattoo', { nodef = true,
-    def = "Your wounds are being staunched by the moss tattoo."})
-  defs_data:set('moon tattoo', { nodef = true,
-    def = "Illuminated by the light of the moon."})
-  defs_data:set('megalith tattoo', { nodef = true,
-    def = "Mentally bolstered by the power of the megalith."})
-  defs_data:set('ox tattoo', { nodef = true,
-    def = "The endurance of the great ox flows through you."})
-  defs_data:set('xp boost', { nodef = true,
+  defs_data:set('xpboost', { nodef = true,
     ondef = function () return "("..matches[2]..")" end,
     defr = [[^You are experiencing a (\d+) percent experience boost\.$]] })
-  defs_data:set('xp bonus', { nodef = true,
+  defs_data:set('xpbonus', { nodef = true,
     ondef = function () return "("..matches[2]..")" end,
     defr = {[[^You are benefitt?ing from a (\d+)% experience bonus\.$]], [[^You are benefitting from a (\d+)% bonus to experience gain\.$]] }})
-  defs_data:set('crit bonus', { nodef = true,
-    ondef = function () return "("..matches[2]..")" end,
-    defr = {[[^You are benefitt?ing from a (\d+)% bonus to critical hits\.$]], [[^You are benefitting from a (\d+)% bonus to critical hits\.$]] }})
   defs_data:set('deaf', { type = 'general',
     def = "You are deaf.",
     off = "The unnatural sound rips through your defences against auditory attacks." })
@@ -3099,6 +3086,10 @@ if svo.haveskillset('woodlore') then
   defs_data:set('spinning', { type = 'woodlore',
     onr = [[^You begin to rapidly spin .+ in a defensive pattern\.$]],
     off = [[^You cease spinning .+\.$]]})
+  defs_data:set('impaling', { type = 'woodlore',
+    onr = [[^You plant the butt end of .+ firmly on the ground and ready yourself to impale any charging enemies\.$]],
+    def = "You are preparing to impale onrushing attackers.",
+    off = "You cease your preparations to impale any charging enemies."})
   defs_data:set('evasion', { type = 'woodlore',
     on = {"You must be in the air before you can begin evasive flying.", "You begin soaring erratically and frantically, attempting to avoid the eyes gazing up from below.", "You are already attempting to elude the prying eyes below."},
     def = "You are flying evasively.",
@@ -3446,44 +3437,19 @@ if svo.haveskillset('emulation') then
 end
 
 if svo.haveskillset('sculpting') then
-  defs_data:set('strata', { type = 'sculpting',
-    def = "You are protected by protective strata.",
-    on = {"Calling upon the power of Garash, you form protective strata to cover your entire form.", "You are already protected by a layer of strata."}})
-  defs_data:set('tremorsense', { type = 'sculpting',
-    def = "You will know who walks upon the earth in your location.",
-    on = {"You begin to sense for those that would tread upon the hallowed earth.", "You are already focussing on the tremors caused by those that walk on land."},
-    off = {"You cease focussing on the tremors created by those that walk on land.", "You are not focussing on the tremors caused by those who walk on land."}})
-  defs_data:set('extrusion', { type = 'sculpting',
-    def = "You will restore your form with magma.",
-    on = "The magma within your form begins to churn.",
-    off = {"Magma explodes from beneath your outer strata, hardening in an instant to form a restored external coating.", "You are not able to extrude your magma to restore yourself so soon after doing it previously."}})
+	defs_data:set('strata', { type = 'sculpting',
+		def = "You are protected by protective strata.",
+		on = {"Calling upon the power of Garash, you form protective strata to cover your entire form.", "You are already protected by a layer of strata."}})
+	defs_data:set('tremorsense', { type = 'sculpting',
+		def = "You will know who walks upon the earth in your location.",
+		on = {"You begin to sense for those that would tread upon the hallowed earth.", "You are already focussing on the tremors caused by those that walk on land."},
+		off = {"You cease focussing on the tremors created by those that walk on land.", "You are not focussing on the tremors caused by those who walk on land."}})
+	defs_data:set('extrusion', { type = 'sculpting',
+		def = "You will restore your form with magma.",
+		on = "The magma within your form begins to churn.",
+		off = {"Magma explodes from beneath your outer strata, hardening in an instant to form a restored external coating.", "You are not able to extrude your magma to restore yourself so soon after doing it previously."}})
 end
 
-if svo.haveskillset('ignition') then
-  defs_data:set('fireshroud', { type = 'ignition',
-  def = "You have shrouded your with flame.",
-  on = "A shroud of flame bursts into being, cloaking you in a burning aura of crimson.",
-  off = "The burning shroud that cloaks you winks out of existence."})
-end
-
-if svo.haveskillset('duress') then
-  defs_data:set('skysight', {type = 'duress',
-    def = "You are aware of all that transpires in Whiirh's domain.",
-    on = {"You begin to focus on the events transpiring within Whiirh's domain.", "You have already enhanced yourself to detect movement through the skies."},
-    off = {"You cease to focus on the events transpiring within Whiirh's domain.", "You are not focussing on the events transpiring within Whiirh's domain."}})
-  defs_data:set('tempest', {type = 'duress',
-    def = "You are surrounded by a raging tempest.",
-    on = {"A whirling tempest comes into existence with you at the centre.","A howling tempest already rages about you."}})
-  defs_data:set('susurrating', {type = 'duress',
-  def = "Susurrations fill the air around you.",
-  on = {"A gentle breeze begins to emanate from you, creating a barely audible murmur.","Susurrations already surround you. "}})
-end
-
-if svo.haveskillset('pervasion') then
-  defs_data:set('cohesion', {type = 'pervasion',
-    def = "You have altered the cohesion of your form.",
-    on = {"You alter the cohesion of your fluid form.", "You have already altered the cohesiveness of your form."}})
-end
 do
   function defences.enablelifevision()
     if svo.dict.lifevision then return end
@@ -4137,17 +4103,15 @@ end
 signals.systemstart:connect(function ()
   local defdefup_t, defkeepup_t = svo.defload()
 	
-  --Empty the def_type table on startup and class change to prevent duplicate defences.
-  defences.def_types = {}
- 
-  --organise tempTriggers in a table to delete on class change
-  svo.defencetemptriggers = svo.defencetemptriggers or {}
+--Empty the def_type table on startup and class change to prevent duplicate defences.
+ defences.def_types = {}
  
   -- create blank defup modes
   for k,_ in pairs(defdefup_t) do
     defdefup[k] = defdefup[k] or {}
     defkeepup[k] = defkeepup[k] or {}
   end
+
 
   for defname, defdata in defs_data:iter() do
     -- sort into def types if applicable
@@ -4158,71 +4122,71 @@ signals.systemstart:connect(function ()
 
     if defdata.onr and type(defdata.onr) == 'table' then
       for _, pattern in ipairs(defdata.onr) do
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempRegexTrigger(pattern, 'svo.defs.got_' .. sk.sanitize(defname) .. '()')
+        tempRegexTrigger(pattern, 'svo.defs.got_' .. sk.sanitize(defname) .. '()')
       end
     elseif defdata.onr then
-      svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempRegexTrigger(defdata.onr, 'svo.defs.got_' .. sk.sanitize(defname) .. '()')
+      tempRegexTrigger(defdata.onr, 'svo.defs.got_' .. sk.sanitize(defname) .. '()')
     end
 
     if defdata.on and type(defdata.on) == 'table' then
       for _, pattern in ipairs(defdata.on) do
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(pattern, 'svo.defs.got_' .. sk.sanitize(defname) .. '()')
+        (tempExactMatchTrigger or tempTrigger)(pattern, 'svo.defs.got_' .. sk.sanitize(defname) .. '()')
       end
     elseif defdata.on then
-      svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(defdata.on, 'svo.defs.got_' .. sk.sanitize(defname) .. '()')
+      (tempExactMatchTrigger or tempTrigger)(defdata.on, 'svo.defs.got_' .. sk.sanitize(defname) .. '()')
     end
 
     if defdata.on_only and type(defdata.on_only) == 'table' then
       for _,pattern in ipairs(defdata.on_only) do
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(pattern, 'svo.defs.gotonly_' .. sk.sanitize(defname) .. '()')
+        (tempExactMatchTrigger or tempTrigger)(pattern, 'svo.defs.gotonly_' .. sk.sanitize(defname) .. '()')
       end
     elseif defdata.on_only then
-      svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(defdata.on_only, 'svo.defs.gotonly_' .. sk.sanitize(defname) .. '()')
+      (tempExactMatchTrigger or tempTrigger)(defdata.on_only, 'svo.defs.gotonly_' .. sk.sanitize(defname) .. '()')
     end
 
-    if defdata.on_free then svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(defdata.on_free, 'svo.defs.got_' .. sk.sanitize(defname) .. '()') end
+    if defdata.on_free then (tempExactMatchTrigger or tempTrigger)(defdata.on_free, 'svo.defs.got_' .. sk.sanitize(defname) .. '()') end
 
     if defdata.offr and type(defdata.offr) == 'string' then
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempRegexTrigger(defdata.offr, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
+        tempRegexTrigger(defdata.offr, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
     elseif defdata.offr then
       for _,pattern in ipairs(defdata.offr) do
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempRegexTrigger(pattern, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
+        tempRegexTrigger(pattern, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
       end
     end
 
     if defdata.off and type(defdata.off) == 'string' then
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(defdata.off, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
+        (tempExactMatchTrigger or tempTrigger)(defdata.off, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
     elseif defdata.off then
       for _,pattern in ipairs(defdata.off) do
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(pattern, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
+        (tempExactMatchTrigger or tempTrigger)(pattern, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
       end
     end
 
     -- this is EXACTLY for substring
     if defdata.offs and type(defdata.offs) == 'string' then
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempTrigger(defdata.offs, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
+        tempTrigger(defdata.offs, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
     elseif defdata.offs then
       for _,pattern in ipairs(defdata.offs) do
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempTrigger(pattern, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
+        tempTrigger(pattern, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()')
       end
     end
 
-    if defdata.off_free then svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(defdata.off_free, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()') end
+    if defdata.off_free then (tempExactMatchTrigger or tempTrigger)(defdata.off_free, 'svo.defs.lost_' .. sk.sanitize(defname) .. '()') end
 
     if defdata.def and type(defdata.def) == 'table' then
       for _,pattern in ipairs(defdata.def) do
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(pattern, 'svo.defs.def_' .. sk.sanitize(defname) .. '()')
+        (tempExactMatchTrigger or tempTrigger)(pattern, 'svo.defs.def_' .. sk.sanitize(defname) .. '()')
       end
     elseif defdata.def then
-      svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempExactMatchTrigger(defdata.def, 'svo.defs.def_' .. sk.sanitize(defname) .. '()')
+      (tempExactMatchTrigger or tempTrigger)(defdata.def, 'svo.defs.def_' .. sk.sanitize(defname) .. '()')
     end
 
     if defdata.defr and type(defdata.defr) == 'table' then
       for _,pattern in ipairs(defdata.defr) do
-        svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempRegexTrigger(pattern, 'svo.defs.def_' .. sk.sanitize(defname) .. '()')
+        tempRegexTrigger(pattern, 'svo.defs.def_' .. sk.sanitize(defname) .. '()')
       end
     elseif defdata.defr then
-      svo.defencetemptriggers[#svo.defencetemptriggers+1] = tempRegexTrigger(defdata.defr, 'svo.defs.def_' .. sk.sanitize(defname) .. '()')
+      tempRegexTrigger(defdata.defr, 'svo.defs.def_' .. sk.sanitize(defname) .. '()')
     end
 
     if not defs['got_' .. defname] then
