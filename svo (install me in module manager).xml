@@ -6000,6 +6000,7 @@ local aff_abbrev = {
   meltingburn         = "5burn",
   mildconcussion      = "h1",
   mildtrauma          = "t1",
+  mindravaged         = "ravg",
   mutilatedleftarm    = "la3",
   mutilatedleftleg    = "ll3",
   mutilatedrightarm   = "ra3",
@@ -6054,6 +6055,9 @@ local aff_abbrev = {
   unknowncrippledlimb = "uwcrip",
   unknowncure         = "uc",
   unknownmental       = "?",
+  unweavingbody       = "uwB",
+  unweavingmind       = "uwM",
+  unweavingspirit     = "uwS",
   vertigo             = "vert",
   vitrification       = "vitri",
   voided              = "void",
@@ -7068,7 +7072,8 @@ svo.modules_list = {
     'svo (stormhammertarget)',
     'svo (limbcounter)',
     'svo (burncounter)',
-    'svo (priestreport)'
+    'svo (priestreport)',
+    'svo (enchanter)'
 
   }</script>
 			<eventHandlerList />
@@ -7174,23 +7179,41 @@ end</script>
 				<script>function svo.classchange(override)
   local newclass = (override ~= "gmcp.Char.Status") and override or gmcp.Char.Status.class
 	
-	-- if you're in Dragon or an unrecognised class, use the None system
-	-- works fine in Dragon as they don't have class-specific skills anyway
+	--Don't switch svo type ond dragonforming
+	if string.find(newclass, "Dragon") then
+		return
+	end
+	
+	
+	-- if you're in an unrecognised class, use the None system
 	if not svo.knownskills[newclass:lower()] then newclass = "None" end
 		
-  if svo.me.class ~= newclass then
-	  local oldclass = svo.me.class
 
-		svo.me.class = newclass
-		svo.signals.saveconfig:emit()
+		
+  if svo.me.class ~= newclass then
+    local oldclass = svo.me.class
+
+    -- kill temporary defense triggers for old class
+    for k,v in pairs(svo.defencetemptriggers) do
+      killTrigger(v)
+    end
+    svo.defencetemptriggers = {}
+
+    svo.me.class = newclass
+    svo.signals.saveconfig:emit()
 		
 		-- reset all serverside prios so serverside doesn't spam class-specific defences
 		-- it's a bug in the game that serverside still tries to put up defences you can't
-		svo.sk.resetserversideprios()
+    svo.sk.resetserversideprios()
 		
-	  svo.systemloaded = false; svo_init_system()		
-	  svo.echof("Changed your Svof from %s over to %s.", oldclass, svo.me.class)
-	end
+    svo.systemloaded = false; svo_init_system()
+    svo.echof("Changed your Svof from %s over to %s.", oldclass, svo.me.class)
+		
+		-- if system is not paused after dragonforming, unpause serverside
+    if not svo.conf.paused then
+      svo.app("off")
+    end
+  end
 end</script>
 				<eventHandlerList>
 					<string>gmcp.Char.Status</string>
