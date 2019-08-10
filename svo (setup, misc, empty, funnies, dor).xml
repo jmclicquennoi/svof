@@ -333,27 +333,34 @@ end, 'save my class')
 
 
 svo.knownskills = {
-  alchemist    = {'transmutation', 'physiology', 'alchemy'},
-  apostate     = {'evileye', 'necromancy', 'apostasy'},
-  bard         = {'voicecraft', 'swashbuckling', 'harmonics'},
-  blademaster  = {'twoarts', 'striking', 'shindo'},
-  depthswalker = {'shadowmancy','aeonics','terminus'},
-  druid        = {'groves', 'metamorphosis', 'reclamation'},
-  infernal     = {'necromancy', 'chivalry', 'weaponmastery'},
-  jester       = {'tarot', 'pranks', 'puppetry'},
-  magi         = {'elementalism', 'crystalism', 'artificing'},
-  monk         = {'tekura', 'kaido', 'telepathy', 'shikudo'},
-  none         = {},
-  occultist    = {'occultism', 'tarot', 'domination'},
-  paladin      = {'chivalry', 'devotion', 'weaponmastery'},
-  priest       = {'spirituality', 'devotion', 'zeal'},
-  runewarden   = {'runelore', 'chivalry', 'weaponmastery'},
-  sentinel     = {'metamorphosis', 'woodlore', 'skirmishing'},
-  serpent      = {'subterfuge', 'venom', 'hypnosis'},
-  shaman       = {'runelore', 'curses', 'vodun'},
-  sylvan       = {'weatherweaving', 'groves', 'propagation'},
-  psion        = {"weaving", "psionics", "emulation"},
-	["earth elemental lord"] = {'sculpting'},
+  alchemist                = {'transmutation', 'physiology', 'alchemy'},
+  apostate                 = {'evileye', 'necromancy', 'apostasy'},
+  bard                     = {'voicecraft', 'swashbuckling', 'harmonics'},
+  blademaster              = {'twoarts', 'striking', 'shindo'},
+  depthswalker             = {'shadowmancy','aeonics','terminus'},
+  druid                    = {'groves', 'metamorphosis', 'reclamation'},
+  infernal                 = {'necromancy', 'chivalry', 'weaponmastery'},
+  jester                   = {'tarot', 'pranks', 'puppetry'},
+  magi                     = {'elementalism', 'crystalism', 'artificing'},
+  monk                     = {'tekura', 'kaido', 'telepathy', 'shikudo'},
+  none                     = {},
+  occultist                = {'occultism', 'tarot', 'domination'},
+  paladin                  = {'chivalry', 'devotion', 'weaponmastery'},
+  priest                   = {'spirituality', 'devotion', 'zeal'},
+  runewarden               = {'runelore', 'chivalry', 'weaponmastery'},
+  sentinel                 = {'metamorphosis', 'woodlore', 'skirmishing'},
+  serpent                  = {'subterfuge', 'venom', 'hypnosis'},
+  shaman                   = {'runelore', 'curses', 'vodun'},
+  sylvan                   = {'weatherweaving', 'groves', 'propagation'},
+  psion                    = {"weaving", "psionics", "emulation"},
+  ["earth elemental lord"] = {'sculpting'},
+  ["fire elemental lord"]  = {'ignition'},
+  ["air elemental lord"]   = {'duress'},
+  ["water elemental lord"] = {'pervasion'},
+  ["earth elemental lady"] = {'sculpting'},
+  ["fire elemental lady"]  = {'ignition'},
+  ["air elemental lady"]   = {'duress'},
+  ["water elemental lady"] = {'pervasion'},
 }
 
 me.skills = {}
@@ -2603,11 +2610,11 @@ local madness_affs = {'addiction', 'confusion', 'dementia', 'hallucinations', 'h
 'lethargy', 'loneliness', 'madness', 'masochism', 'paranoia', 'recklessness', 'stupidity', 'vertigo'}
 
 for herbname, herbaffs in pairs({
-  goldenseal = {'dissonance', 'impatience', 'stupidity', 'dizziness', 'epilepsy', 'shyness', 'depression',
+  goldenseal = {'unweavingmind', 'dissonance', 'impatience', 'stupidity', 'dizziness', 'epilepsy', 'shyness', 'depression',
    'shadowmadness'},
   kelp = {'asthma', 'hypochondria', 'healthleech', 'sensitivity', 'clumsiness', 'weakness'},
   lobelia = {'claustrophobia', 'recklessness', 'agoraphobia', 'loneliness', 'masochism', 'vertigo', 'guilt', 'spiritburn', 'tenderskin'},
-  ginseng = {'haemophilia', 'darkshade', 'relapsing', 'addiction', 'illness', 'lethargy'},
+  ginseng = {'unweavingbody', 'haemophilia', 'darkshade', 'relapsing', 'addiction', 'illness', 'lethargy'},
   ash = {'hallucinations', 'hypersomnia', 'confusion', 'paranoia', 'dementia'},
   bellwort = {'generosity', 'pacifism', 'justice', 'inlove', 'peace', 'retribution', 'timeloop'}
 }) do
@@ -2662,7 +2669,8 @@ empty.treecurables = {'ablaze', 'addiction', 'aeon', 'agoraphobia', 'anorexia', 
 'peace', 'recklessness', 'relapsing', 'selarnia', 'sensitivity', 'shyness', 'slickness', 'stupidity', 'stuttering',
 'unknownany', 'unknowncrippledarm', 'unknowncrippledleg', 'unknownmental', 'vertigo', 'voyria', 'weakness', 'hamstring',
 'shivering', 'frozen', 'skullfractures', 'crackedribs', 'wristfractures', 'torntendons', 'depression', 'parasite',
-'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'guilt', 'spiritburn', 'tenderskin', 'crushedthroat'}
+'retribution', 'shadowmadness', 'timeloop', 'degenerate', 'deteriorate', 'guilt', 'spiritburn', 'tenderskin', 'crushedthroat',
+'mindravaged', 'unweavingbody', 'unweavingmind', 'unweavingspirit'}
 empty.treeblocks = {
   madness = {'madness', 'dementia', 'stupidity', 'confusion', 'hypersomnia', 'paranoia', 'hallucinations', 'impatience',
   'addiction', 'agoraphobia', 'inlove', 'loneliness', 'recklessness', 'masochism'},
@@ -2707,7 +2715,7 @@ empty.dragonheal = empty.tree
 empty.shrugging  = empty.tree
 
 empty.smoke_elm = function()
-  svo.rmaff({'deadening', 'madness', 'aeon'})
+  svo.rmaff({'unweavingspirit', 'tension', 'deadening', 'madness', 'aeon'})
 end
 
 empty.smoke_valerian = function()
@@ -2782,6 +2790,11 @@ empty.eat_ginger = function ()
   svo.dict.melancholichumour.count = 0
   svo.dict.phlegmatichumour.count = 0
   svo.dict.sanguinehumour.count = 0
+end
+
+empty.eat_pear = function ()
+  svo.rmaff('pressure')
+	svo.dict.pressure.count = 0
 end
 
 end -- end of svo empty loader
